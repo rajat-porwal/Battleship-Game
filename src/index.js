@@ -1,3 +1,3 @@
-import {shipBuilding as ship} from "./shipBuilding";
-import { gridSize, grid, checkLegalPlacement, gameBoard } from './gameBoard';
+import {shipBuilding} from "./shipBuilding";
+import { gameBoard } from './gameBoard';
 

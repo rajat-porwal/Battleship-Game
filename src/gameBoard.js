@@ -11,7 +11,6 @@ class gameBoard{
            /*I was thinking always in terms of having a div and filling it with inner text that marks the ship instead
            of creating an array and initializing it to null and then later finding a way to create equal number of divs
            and later populating them with these array items  */
-              
 
     checkLegalPlacement(length, coordinates, orientation) {
         const gridSize = 10; 
@@ -79,6 +78,7 @@ class gameBoard{
       
         return false;
       }
+
       placeShipOnBoard(length, coordinates, orientation) {
         if (this.checkLegalPlacement(length, coordinates, orientation)) {
           const [x, y] = coordinates;
@@ -104,9 +104,4 @@ class gameBoard{
       }
 }
 
-module.exports = {
-    gridSize,
-    grid,
-    checkLegalPlacement,
-    gameBoard
-  };
+module.exports = { gameBoard };
