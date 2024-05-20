@@ -1,0 +1,26 @@
+{
+  "name": "battleship-game",
+  "version": "1.0.0",
+  "description": "An attempt to recreate the Battleship (also known as Battleships or Sea Battle) strategy game which is for two players. It is played on ruled grids (paper or board) on which each player's fleet of warships are marked. The locations of the fleets are concealed from the other player. Players alternate turns calling \"shots\" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajat-porwal/Battleship-Game.git"
+  },
+  "author": "Rajat Porwal <rajatporwal@protonmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajat-porwal/Battleship-Game/issues"
+  },
+  "homepage": "https://github.com/rajat-porwal/Battleship-Game#readme",
+  "devDependencies": {
+    "css-loader": "^7.1.1",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
