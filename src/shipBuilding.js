@@ -4,4 +4,10 @@ class shipBuilding {
         this.timesHit = timesHit;
         this.sunkStatus = sunkStatus;
     }
+
+    shipHit() {
+        this.timesHit++;
+    }
+    
+    
 }
