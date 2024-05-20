@@ -10,8 +10,10 @@ class shipBuilding {
     }
     
     isSunk() {
-        if(this.timesHit == this.length){
+        if(this.timesHit == this.length){ // ship length equals no. of times it has been hit, it drowns 
             this.sunkStatus = true;
         }
     }
 }
+
+export default shipBuilding;
