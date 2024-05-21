@@ -80,6 +80,13 @@ class gameBoard{
         return false;
       }
 
+      allShipsSunken(){
+        if(this.ships.length === 0){
+          return true;
+        }
+        return false;
+      }
+
       placeShipOnBoard(length, coordinates, orientation) {
         if (this.checkLegalPlacement(length, coordinates, orientation)) {
           const [x, y] = coordinates;
@@ -115,6 +122,9 @@ class gameBoard{
                     if(ship.isSunk()){
                         this.ships.pop(ship);
                     console.log('ship gone');
+                    if(this.allShipsSunken()){
+                      console.log('game over');
+                    }
                     break;
                     }
                     console.log('shi hit');
@@ -124,10 +134,14 @@ class gameBoard{
                 else{
                     this.ships.pop(ship);
                     console.log('ship gone');
+                    if(this.allShipsSunken()){
+                      console.log('game over');
+                    }
                     break;
                 }
             }
             else{
+                console.log('missed it');
                 this.missedAttack.push(attackCoordinates);
             }
         }
