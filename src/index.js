@@ -3,6 +3,14 @@ import { gameBoard } from './gameBoard';
 import { player } from "./player";
 import './style.css';
 
+function toggleBlurEffect(element, shouldBlur) {
+    if (shouldBlur) {
+        element.classList.add('blur');
+    } else {
+        element.classList.remove('blur');
+    }
+}
+
 const playerOne = new player('rajat', false, 10);
 const playerTwo = new player('pc', true, 10);
 
@@ -62,6 +70,7 @@ for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
         const column = document.createElement('div');
         column.classList.add('grid-cell');
+        toggleBlurEffect(column, true);
         column.setAttribute('data-coordinates', `[${i},${j}]`);
         // column.innerHTML = playerOne.gameBoard.grid[i][j] ? 'S' : ''; // Display 'S' for ship
         gridRow.appendChild(column);
@@ -69,6 +78,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 playerTwoDiv.addEventListener('click', (e) => {
+    toggleBlurEffect(e.target, false);
     const clickedCoordinates = JSON.parse(e.target.getAttribute('data-coordinates'));
     const clickedX = clickedCoordinates[0];
     const clickedY = clickedCoordinates[1];
