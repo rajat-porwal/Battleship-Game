@@ -7,6 +7,7 @@ function toggleBlurEffect(element, shouldBlur) {            // such a powerful c
 }
 
 function htmlGridGenerator(player, playerDiv){
+    playerDiv.innerHTML = '';
     for (let i = 0; i < 10; i++) {
         const gridRow = document.createElement('div');
         gridRow.classList.add('grid-row');
@@ -15,6 +16,7 @@ function htmlGridGenerator(player, playerDiv){
             const column = document.createElement('div');
             column.classList.add('grid-cell');
             column.setAttribute('data-coordinates', `[${i},${j}]`);
+            // column.innerHTML = player.gameBoard.grid[i][j] ? 'S' : '';
             if(playerDiv.id === 'playerOneDiv'){
                 toggleBlurEffect(column, false); 
             }

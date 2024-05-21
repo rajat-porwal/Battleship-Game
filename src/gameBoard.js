@@ -14,71 +14,54 @@ class gameBoard{
            of creating an array and initializing it to null and then later finding a way to create equal number of divs
            and later populating them with these array items  */
 
-    checkLegalPlacement(length, coordinates, orientation) {
+        checkLegalPlacement(length, coordinates, orientation) {
         const x = coordinates[0];
         const y = coordinates[1];
         const minBoundary = [0, 0];
         const maxBoundary = [this.gridSize - 1, this.gridSize - 1];
       
         switch (length) {
-          case 1:
-            if (orientation === 'horizontal') {
-              if (y >= minBoundary[1] && y <= maxBoundary[1] &&
-                  x >= minBoundary[0] && x <= maxBoundary[0] && !this.grid[x][y]) {
-                return true;
-              }
-            } else if (orientation === 'vertical') {
-              if (x >= minBoundary[0] && x <= maxBoundary[0] &&
-                  y >= minBoundary[1] && y <= maxBoundary[1] && !this.grid[x][y]) {
-                return true;
-              }
-            }
-            break;
-          case 2:
-            if (orientation === 'horizontal') {
-              if (y + 1 <= maxBoundary[1] && x >= minBoundary[0] && x <= maxBoundary[0] &&
-                  !this.grid[x][y] && !this.grid[x][y + 1]) {
-                return true;
-              }
-            } else if (orientation === 'vertical') {
-              if (x + 1 <= maxBoundary[0] && y >= minBoundary[1] && y <= maxBoundary[1] &&
-                  !this.grid[x][y] && !this.grid[x + 1][y]) {
-                return true;
-              }
-            }
-            break;
-          case 3:
-            if (orientation === 'horizontal') {
-              if (y + 2 <= maxBoundary[1] && x >= minBoundary[0] && x <= maxBoundary[0] &&
-                  !this.grid[x][y] && !this.grid[x][y + 1] && !this.grid[x][y + 2]) {
-                return true;
-              }
-            } else if (orientation === 'vertical') {
-              if (x + 2 <= maxBoundary[0] && y >= minBoundary[1] && y <= maxBoundary[1] &&
-                  !this.grid[x][y] && !this.grid[x + 1][y] && !this.grid[x + 2][y]) {
-                return true;
-              }
-            }
-            break;
-          case 4:
-            if (orientation === 'horizontal') {
-              if (y + 3 <= maxBoundary[1] && x >= minBoundary[0] && x <= maxBoundary[0] &&
-                  !this.grid[x][y] && !this.grid[x][y + 1] && !this.grid[x][y + 2] && !this.grid[x][y + 3]) {
-                return true;
-              }
-            } else if (orientation === 'vertical') {
-              if (x + 3 <= maxBoundary[0] && y >= minBoundary[1] && y <= maxBoundary[1] &&
-                  !this.grid[x][y] && !this.grid[x + 1][y] && !this.grid[x + 2][y] && !this.grid[x + 3][y]) {
-                return true;
-              }
-            }
-            break;
-          default:
-            return false;
+            case 1:
+                if (orientation === 'horizontal') {
+                    if (y >= minBoundary[1] && y <= maxBoundary[1] &&
+                        x >= minBoundary[0] && x <= maxBoundary[0] && !this.grid[x][y]) {
+                        return true;
+                    }
+                } else if (orientation === 'vertical') {
+                    if (x >= minBoundary[0] && x <= maxBoundary[0] &&
+                        y >= minBoundary[1] && y <= maxBoundary[1] && !this.grid[x][y]) {
+                        return true;
+                    }
+                }
+                break;
+            case 2:
+            case 3:
+            case 4:
+                if (orientation === 'horizontal') {
+                    // Check for overlap in ship placement
+                    for (let i = 0; i < length; i++) {
+                        if (y + i > maxBoundary[1] || this.grid[x][y + i]) {
+                            return false; // Overlap detected or out of bounds
+                        }
+                    }
+                    return true; // No overlap detected
+                } else if (orientation === 'vertical') {
+                    // Check for overlap in ship placement
+                    for (let i = 0; i < length; i++) {
+                        if (x + i > maxBoundary[0] || this.grid[x + i][y]) {
+                            return false; // Overlap detected or out of bounds
+                        }
+                    }
+                    return true; // No overlap detected
+                }
+                break;
+            default:
+                return false;
         }
       
         return false;
-      }
+    }
+        
 
       allShipsSunken(){
         if(this.ships.length === 0){
@@ -110,11 +93,10 @@ class gameBoard{
         }
         return false;
       }
-
       receiveAttack(attackCoordinates) {
         const x = attackCoordinates[0];
         const y = attackCoordinates[1];
-        let hit = false;
+        let hit = false;    // this is also a nice way to switch to missing attack instead of using else block keep it in mind to use in other codes
     
         for (let i = 0; i < this.ships.length; i++) {
             const ship = this.ships[i];
@@ -124,7 +106,7 @@ class gameBoard{
                     hit = true;
                     console.log('Ship hit!');
                     if (ship.isSunk()) {
-                        this.ships.splice(i, 1); // Remove sunk ship from ships array
+                        this.ships.splice(i, 1); // Remove sunken ship from ships 
                         console.log('Ship sunk!');
                         if (this.allShipsSunken()) {
                             console.log('Game over');
@@ -140,6 +122,43 @@ class gameBoard{
         }
     }
     
+      /* problem with my this logic is every time I am clicking on any ship it is iterating over
+      all the ships and which is making the else part of this code being executed every time */
+      // receiveAttack(attackCoordinates){
+      //   const x = attackCoordinates[0];
+      //   const y = attackCoordinates[1];
+        
+      //   for(const ship of this.ships){
+      //       if(this.grid[x][y] === ship){
+      //           if(!ship.isSunk()){
+      //               ship.shipHit();
+      //               if(ship.isSunk()){
+      //                   this.ships.pop(ship);
+      //               console.log('ship gone');
+      //               if(this.allShipsSunken()){
+      //                 console.log('game over');
+      //               }
+      //               break;
+      //               }
+      //               console.log('shi hit');
+      //               break;
+                    
+      //           }
+      //           else{
+      //               this.ships.pop(ship);
+      //               console.log('ship gone');
+      //               if(this.allShipsSunken()){
+      //                 console.log('game over');
+      //               }
+      //               break;
+      //           }
+      //       }
+      //       else{
+      //           console.log('missed it');
+      //           this.missedAttack.push(attackCoordinates);
+      //       }
+      //   }
+      // }
 }
 
 module.exports = { gameBoard };

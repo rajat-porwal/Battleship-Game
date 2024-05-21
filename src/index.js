@@ -1,5 +1,4 @@
-import {shipBuilding} from "./shipBuilding";
-import { gameBoard } from './gameBoard';
+import { randomShipGeneration } from "./randomShipGeneration";
 import { player } from "./player";
 import { htmlGridGenerator, toggleBlurEffect } from "./htmlGridGenerator";
 import './style.css';
@@ -62,7 +61,7 @@ function computerPlay() {
     const clickedCell = playerOne.gameBoard.grid[clickedX][clickedY];
 
     const targetCell = playerOneDiv.querySelector(`[data-coordinates="[${clickedX},${clickedY}]"]`);
-    if(targetCell.innerHTML){
+    if(targetCell.innerHTML ){
         currentPlayer = playerOne;
         toggleTurn();
     }
@@ -80,6 +79,40 @@ function computerPlay() {
         toggleTurn(); 
     }
 }
+const btn = document.createElement('button');
+btn.innerText = 'Random Ship Placement';
+btn.id = 'generateShipsButton';
+document.body.appendChild(btn);
+
+btn.addEventListener('click', () => {
+    clearGameBoard(playerOne.gameBoard);
+
+    const shipLengths = { 4: 1, 3: 2, 2: 3, 1: 4 };
+    for (const [length, count] of Object.entries(shipLengths)) {
+        for (let i = 0; i < count; i++) {
+            let placed = false;
+            while (!placed) {           // i put this code in randomship genrtor but it caused problem as gameboard wasnt defined or player in that module
+                const [shipLength, coordinates, orientation] = randomShipGeneration(Number(length));
+                placed = playerOne.gameBoard.placeShipOnBoard(shipLength, coordinates, orientation);
+            }
+        }
+    }
+    htmlGridGenerator(playerOne, playerOneDiv);
+    console.log(playerOne.gameBoard.ships);
+
+    clearGameBoard(playerTwo.gameBoard);
+    for (const [length, count] of Object.entries(shipLengths)) {
+        for (let i = 0; i < count; i++) {
+            let placed = false;
+            while (!placed) {
+                const [shipLength, coordinates, orientation] = randomShipGeneration(Number(length));
+                placed = playerTwo.gameBoard.placeShipOnBoard(shipLength, coordinates, orientation);
+            }
+        }
+    }
+    htmlGridGenerator(playerTwo, playerTwoDiv);
+    console.log(playerTwo.gameBoard.ships);
+});
 
 function letsPlay(){
     // playerOneDiv.addEventListener('click', (e) => {
@@ -104,7 +137,7 @@ function letsPlay(){
 
     playerTwoDiv.addEventListener('click', (e) => {
         if(currentPlayer === playerOne){
-            if(e.target.innerHTML){         // to give the same player chance again if clicked on same block
+            if(e.target.innerHTML ){         // to give the same player chance again if clicked on same block
                 currentPlayer = playerTwo;
                 toggleTurn();
             }
@@ -147,8 +180,24 @@ function letsPlay(){
             
         }
     })
+
+    playerOneDiv.addEventListener('click', () => {          //so that when the game starts button gets disabled
+       btn.disabled = true;
+    });
+    playerTwoDiv.addEventListener('click', () => {
+       btn.disabled = true;
+    });
 }
 
 letsPlay();
+
+
+
+function clearGameBoard(gameBoard) {            // I was confused as to how to clear the previous ships when the button is clicked this is how I had to
+    gameBoard.grid = Array.from({ length: 10 }, () => Array(10).fill(null));
+    gameBoard.ships = [];
+    gameBoard.missedAttack = [];
+}
+
 
 
