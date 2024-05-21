@@ -21,6 +21,7 @@ class player{
             const x = this.randomNumberGenerate();
             const y = this.randomNumberGenerate();
             this.gameBoard.receiveAttack([x, y]);
+            return [x, y];
         }
         else{
             this.gameBoard.receiveAttack(attackCoordinates);

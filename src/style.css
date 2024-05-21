@@ -7,7 +7,7 @@
     display: inline-block;
   }
 .grid-cell.blur {
-    filter: blur(2px);
+    filter: blur(1px);
      /* Optional: to disable interactions */
 }
   .grid-cell-hidden{
