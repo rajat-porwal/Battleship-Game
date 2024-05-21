@@ -106,6 +106,11 @@ function letsPlay(){
                 // column.classList.add('grid-cell');
                 console.log(`Clicked on cell [${clickedX},${clickedY}]`);
                 e.target.innerHTML = 'S';
+                if(playerTwo.gameBoard.allShipsSunken()){
+                    currentPlayer = null;
+                    alert('Game Over');
+                    return;                 // this return statement I could not think of to exit code when game is over
+                }
             }
             else{
                 console.log(playerTwo.gameBoard.missedAttack);
