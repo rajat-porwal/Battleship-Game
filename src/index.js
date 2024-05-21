@@ -62,12 +62,23 @@ function computerPlay() {
     const clickedCell = playerOne.gameBoard.grid[clickedX][clickedY];
 
     const targetCell = playerOneDiv.querySelector(`[data-coordinates="[${clickedX},${clickedY}]"]`);
-    if (clickedCell) {
-        targetCell.innerHTML = 'S';
-    } else {
-        targetCell.innerHTML = 'X';
+    if(targetCell.innerHTML){
+        currentPlayer = playerOne;
+        toggleTurn();
     }
-    toggleTurn();
+    else{
+        if (clickedCell) {
+            targetCell.innerHTML = 'S';
+            if(playerOne.gameBoard.allShipsSunken()){
+                currentPlayer = null;
+                alert('Game Over');
+                return;                 // this return statement I could not think of to exit code when game is over
+            }
+        } else {
+            targetCell.innerHTML = 'X';
+        }
+        toggleTurn(); 
+    }
 }
 
 function letsPlay(){
@@ -93,11 +104,16 @@ function letsPlay(){
 
     playerTwoDiv.addEventListener('click', (e) => {
         if(currentPlayer === playerOne){
-            toggleBlurEffect(e.target, false);
+            if(e.target.innerHTML){         // to give the same player chance again if clicked on same block
+                currentPlayer = playerTwo;
+                toggleTurn();
+            }
+            else{
+                toggleBlurEffect(e.target, false);
             const clickedCoordinates = JSON.parse(e.target.getAttribute('data-coordinates'));
             const clickedX = clickedCoordinates[0];
             const clickedY = clickedCoordinates[1];
-        
+            
             // Retrieve the ship object or null from the gameboard grid at clicked coordinates
             const clickedCell = playerTwo.gameBoard.grid[clickedX][clickedY];
             playerTwo.receiveAttack([clickedX, clickedY]);
@@ -127,6 +143,8 @@ function letsPlay(){
             //     playerTwo.;
             // } 
             toggleTurn();
+            }
+            
         }
     })
 }
