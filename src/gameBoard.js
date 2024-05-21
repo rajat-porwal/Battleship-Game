@@ -111,41 +111,35 @@ class gameBoard{
         return false;
       }
 
-      receiveAttack(attackCoordinates){
+      receiveAttack(attackCoordinates) {
         const x = attackCoordinates[0];
         const y = attackCoordinates[1];
-        
-        for(const ship of this.ships){
-            if(this.grid[x][y] === ship){
-                if(!ship.isSunk()){
+        let hit = false;
+    
+        for (let i = 0; i < this.ships.length; i++) {
+            const ship = this.ships[i];
+            if (this.grid[x][y] === ship) {
+                if (!ship.isSunk()) {
                     ship.shipHit();
-                    if(ship.isSunk()){
-                        this.ships.pop(ship);
-                    console.log('ship gone');
-                    if(this.allShipsSunken()){
-                      console.log('game over');
+                    hit = true;
+                    console.log('Ship hit!');
+                    if (ship.isSunk()) {
+                        this.ships.splice(i, 1); // Remove sunk ship from ships array
+                        console.log('Ship sunk!');
+                        if (this.allShipsSunken()) {
+                            console.log('Game over');
+                        }
                     }
-                    break;
-                    }
-                    console.log('shi hit');
-                    break;
-                    
                 }
-                else{
-                    this.ships.pop(ship);
-                    console.log('ship gone');
-                    if(this.allShipsSunken()){
-                      console.log('game over');
-                    }
-                    break;
-                }
-            }
-            else{
-                console.log('missed it');
-                this.missedAttack.push(attackCoordinates);
             }
         }
-      }
+    
+        if (!hit) {
+            console.log('Missed it!');
+            this.missedAttack.push(attackCoordinates);
+        }
+    }
+    
 }
 
 module.exports = { gameBoard };

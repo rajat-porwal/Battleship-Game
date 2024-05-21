@@ -63,10 +63,40 @@ for (let i = 0; i < 10; i++) {
         const column = document.createElement('div');
         column.classList.add('grid-cell');
         column.setAttribute('data-coordinates', `[${i},${j}]`);
-        column.innerHTML = playerOne.gameBoard.grid[i][j] ? 'S' : ''; // Display 'S' for ship
+        // column.innerHTML = playerOne.gameBoard.grid[i][j] ? 'S' : ''; // Display 'S' for ship
         gridRow.appendChild(column);
     }
 }
+
+playerTwoDiv.addEventListener('click', (e) => {
+    const clickedCoordinates = JSON.parse(e.target.getAttribute('data-coordinates'));
+    const clickedX = clickedCoordinates[0];
+    const clickedY = clickedCoordinates[1];
+
+    // Retrieve the ship object or null from the gameboard grid at clicked coordinates
+    const clickedCell = playerTwo.gameBoard.grid[clickedX][clickedY];
+    playerTwo.receiveAttack([clickedX, clickedY]);
+    if(clickedCell){
+        // column.classList.remove('grid-cell-hidden');
+        // column.classList.add('grid-cell');
+        console.log(`Clicked on cell [${clickedX},${clickedY}]`);
+        e.target.innerHTML = 'S';
+    }
+    else{
+        console.log(playerTwo.gameBoard.missedAttack);
+        e.target.innerHTML = 'X';
+    }
+    // if (clickedCell) {
+    //     // Perform action here, e.g., receive attack
+    //     playerTwo.receiveAttack([clickedX, clickedY]);
+    //     // Update UI or game state as needed
+    //     console.log(`Clicked on cell [${clickedX},${clickedY}]`);
+    //     console.log('Performing attack or other action...');
+    // } else {
+    //     // Handle missed attack or invalid click if needed
+    //     playerTwo.;
+    // }
+})
 
 // const myGameBoard = new gameBoard(10); // 10x10 grid
 // // // Create a new ship with length 3
