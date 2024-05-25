@@ -15,31 +15,15 @@ const playerOne = new player('rajat', false, 10);
 const playerTwo = new player('pc', true, 10);
 let currentPlayer = playerOne;
 
-playerOne.placeShip(4, [0,0], 'horizontal');
-playerOne.placeShip(3, [0,4], 'horizontal');
-playerOne.placeShip(3, [0,7], 'horizontal');
-playerOne.placeShip(2, [1,0], 'horizontal');
-playerOne.placeShip(2, [1,2], 'horizontal');
-playerOne.placeShip(2, [1,4], 'horizontal');
-playerOne.placeShip(1, [1,6], 'horizontal');
-playerOne.placeShip(1, [1,7], 'horizontal');
-playerOne.placeShip(1, [1,8], 'horizontal');
-playerOne.placeShip(1, [1,9], 'horizontal');
-
-playerTwo.placeShip(4, [0,0], 'horizontal');
-playerTwo.placeShip(3, [0,4], 'horizontal');
-playerTwo.placeShip(3, [0,7], 'horizontal');
-playerTwo.placeShip(2, [1,0], 'horizontal');
-playerTwo.placeShip(2, [1,2], 'horizontal');
-playerTwo.placeShip(2, [1,4], 'horizontal');
-playerTwo.placeShip(1, [1,6], 'horizontal');
-playerTwo.placeShip(1, [1,7], 'horizontal');
-playerTwo.placeShip(1, [1,8], 'horizontal');
-playerTwo.placeShip(1, [1,9], 'horizontal');
 
 const mainDiv = document.createElement('div');
 mainDiv.classList.add('mainDiv');
 document.body.appendChild(mainDiv);
+
+const welcomeMessage = document.createElement('div');
+welcomeMessage.classList.add('welcome-message');
+welcomeMessage.innerText = 'Welcome to Battleship! Click the "Random Ship Placement" button to start the game.';
+mainDiv.appendChild(welcomeMessage);
 
 const playerOneDiv = document.createElement('div');
 playerOneDiv.id = 'playerOneDiv';   //added this id part only cuz of I dont want the player one to be blurred its used in htmlgrid part
