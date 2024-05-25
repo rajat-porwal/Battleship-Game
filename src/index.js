@@ -81,6 +81,18 @@ function computerPlay() {
 
 
 btn.addEventListener('click', () => {
+
+    const welcomeMessage = document.querySelector('.welcome-message');
+    welcomeMessage.innerText = 'Click on Tiles for the game to begin or generate your ship placement again';
+
+    const loader = document.querySelector('.loader');
+    if(loader){
+        loader.style.display = 'none';
+    }
+    
+    
+    
+
     clearGameBoard(playerOne.gameBoard);
 
     const shipLengths = { 4: 1, 3: 2, 2: 3, 1: 4 };
