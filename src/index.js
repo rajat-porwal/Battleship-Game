@@ -3,27 +3,27 @@ import { player } from "./player";
 import { htmlGridGenerator, toggleBlurEffect } from "./htmlGridGenerator";
 import './style.css';
 
-function toggleTurn(){
-    currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
-    console.log(`It's now ${currentPlayer.playerName}'s turn`);
-    if (currentPlayer.isComputer) {                     // i was stuck as to how will i simulate pc's turn but this is how to do it
-        computerPlay();
-    }
-}
-
 const playerOne = new player('rajat', false, 10);
 const playerTwo = new player('pc', true, 10);
 let currentPlayer = playerOne;
 
-
-const mainDiv = document.createElement('div');
-mainDiv.classList.add('mainDiv');
-document.body.appendChild(mainDiv);
+const container = document.createElement('div');    //shifting welcome message, mainDIv and Button inside it to use flex on it to display things
+container.classList.add('container');
+document.body.appendChild(container);
 
 const welcomeMessage = document.createElement('div');
 welcomeMessage.classList.add('welcome-message');
 welcomeMessage.innerText = 'Welcome to Battleship! Click the "Random Ship Placement" button to start the game.';
-mainDiv.appendChild(welcomeMessage);
+container.appendChild(welcomeMessage);
+
+const mainDiv = document.createElement('div');
+mainDiv.classList.add('mainDiv');
+container.appendChild(mainDiv);
+
+const btn = document.createElement('button');
+btn.innerText = 'Random Ship Placement';
+btn.id = 'generateShipsButton';
+container.appendChild(btn);
 
 const playerOneDiv = document.createElement('div');
 playerOneDiv.id = 'playerOneDiv';   //added this id part only cuz of I dont want the player one to be blurred its used in htmlgrid part
@@ -63,10 +63,7 @@ function computerPlay() {
         toggleTurn(); 
     }
 }
-const btn = document.createElement('button');
-btn.innerText = 'Random Ship Placement';
-btn.id = 'generateShipsButton';
-document.body.appendChild(btn);
+
 
 btn.addEventListener('click', () => {
     clearGameBoard(playerOne.gameBoard);
@@ -97,6 +94,14 @@ btn.addEventListener('click', () => {
     htmlGridGenerator(playerTwo, playerTwoDiv);
     console.log(playerTwo.gameBoard.ships);
 });
+
+function toggleTurn(){
+    currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+    console.log(`It's now ${currentPlayer.playerName}'s turn`);
+    if (currentPlayer.isComputer) {                     // i was stuck as to how will i simulate pc's turn but this is how to do it
+        computerPlay();
+    }
+}
 
 function letsPlay(){
     // playerOneDiv.addEventListener('click', (e) => {
