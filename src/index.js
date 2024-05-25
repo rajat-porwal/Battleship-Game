@@ -140,6 +140,7 @@ function letsPlay(){
             const clickedCell = playerTwo.gameBoard.grid[clickedX][clickedY];
             playerTwo.receiveAttack([clickedX, clickedY]);
             if(clickedCell){
+                e.target.classList.add('hit-cell');
                 // column.classList.remove('grid-cell-hidden');
                 // column.classList.add('grid-cell');
                 console.log(`Clicked on cell [${clickedX},${clickedY}]`);
@@ -151,6 +152,7 @@ function letsPlay(){
                 }
             }
             else{
+                e.target.classList.add('miss-cell');
                 console.log(playerTwo.gameBoard.missedAttack);
                 e.target.innerHTML = 'X';
             }
