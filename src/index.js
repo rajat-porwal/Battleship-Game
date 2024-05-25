@@ -1,6 +1,7 @@
 import { randomShipGeneration } from "./randomShipGeneration";
 import { player } from "./player";
 import { htmlGridGenerator, toggleBlurEffect } from "./htmlGridGenerator";
+import { addFooter } from "./addFooter";
 import './style.css';
 
 const playerOne = new player('rajat', false, 10);
@@ -209,6 +210,9 @@ function letsPlay(){
 
 letsPlay();
 
+var rajatPorwalLink = 'https://example.com/rajatporwal';
+var sourceCodeLink = 'https://example.com/sourcecode';
+addFooter(rajatPorwalLink, sourceCodeLink);
 
 
 function clearGameBoard(gameBoard) {            // I was confused as to how to clear the previous ships when the button is clicked this is how I had to
