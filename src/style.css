@@ -1,3 +1,9 @@
+:root {
+  --main-color: #ecf0f1;
+  --point-color: #555;
+  --size: 5px;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -7,10 +13,44 @@ body {
   background-color: #f0f0f0;
 }
 
+.loader {
+  background-color: var(--main-color);
+  overflow: hidden;
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto; /* Center the loader */
+}
+
+.loader__element {
+  border-radius: 100%;
+  border: var(--size) solid var(--point-color);
+  margin: calc(var(--size)*2);
+}
+
+.loader__element:nth-child(1) {
+  animation: preloader .6s ease-in-out alternate infinite;
+}
+
+.loader__element:nth-child(2) {
+  animation: preloader .6s ease-in-out alternate .2s infinite;
+}
+
+.loader__element:nth-child(3) {
+  animation: preloader .6s ease-in-out alternate .4s infinite;
+}
+
+@keyframes preloader {
+  100% { transform: scale(2); }
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .welcome-message {
@@ -19,12 +59,28 @@ body {
   margin-bottom: 20px;
   text-align: center;
   color: #333;
+  animation: fadeIn 2s ease-in-out; /* Add animation here */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
 .mainDiv {
   display: flex;
-  gap: 120px;
+  gap: 20px;
   margin-bottom: 20px;
+}
+
+.gameboard {
+  display: inline-block;
 }
 
 .grid-row {
@@ -43,6 +99,7 @@ body {
 
 .grid-cell.blur {
   filter: blur(5px);
+  pointer-events: none;
 }
 
 .grid-cell-hidden {
@@ -69,13 +126,13 @@ button:disabled {
 }
 
 .ship-cell {
-  background-color: #007bff; 
+  background-color: #007bff; /* Blue color for ship cells */
 }
 
 .hit-cell {
-  background-color: red; 
+  background-color: red; /* Red color for hits */
 }
 
 .miss-cell {
-  background-color: grey; 
+  background-color: grey; /* Grey color for misses */
 }
