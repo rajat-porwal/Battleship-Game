@@ -67,3 +67,11 @@ button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+.ship-cell {
+  background-color: #007bff; /* Blue color for ship cells */
+}
+
+.hit-cell {
+  background-color: red; /* Red color for hits */
+}
