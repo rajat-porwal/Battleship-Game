@@ -25,6 +25,21 @@ btn.innerText = 'Random Ship Placement';
 btn.id = 'generateShipsButton';
 container.appendChild(btn);
 
+const loader = document.createElement('div');
+loader.classList.add('loader');
+welcomeMessage.appendChild(loader);
+
+const spanElement1 = document.createElement("span");
+const spanElement2 = document.createElement("span");
+const spanElement3 = document.createElement("span");
+spanElement1.classList.add('loader__element');
+spanElement2.classList.add('loader__element');
+spanElement3.classList.add('loader__element');
+
+loader.appendChild(spanElement1);
+loader.appendChild(spanElement2);
+loader.appendChild(spanElement3);
+
 const playerOneDiv = document.createElement('div');
 playerOneDiv.id = 'playerOneDiv';   //added this id part only cuz of I dont want the player one to be blurred its used in htmlgrid part
 playerOneDiv.classList.add('gameboard');

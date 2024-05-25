@@ -23,7 +23,7 @@ body {
 
 .mainDiv {
   display: flex;
-  gap: 20px;
+  gap: 120px;
   margin-bottom: 20px;
 }
 
@@ -69,9 +69,13 @@ button:disabled {
 }
 
 .ship-cell {
-  background-color: #007bff; /* Blue color for ship cells */
+  background-color: #007bff; 
 }
 
 .hit-cell {
-  background-color: red; /* Red color for hits */
+  background-color: red; 
+}
+
+.miss-cell {
+  background-color: grey; 
 }
