@@ -17,7 +17,7 @@ function htmlGridGenerator(player, playerDiv){
             column.classList.add('grid-cell');
             column.setAttribute('data-coordinates', `[${i},${j}]`);
             if (player.gameBoard.grid[i][j] && playerDiv.id === 'playerOneDiv') {
-                column.classList.add('ship-cell');
+                column.classList.add('ship-cell');      //for blue tiles in css
             }
             // column.innerHTML = player.gameBoard.grid[i][j] ? 'S' : '';
             if(playerDiv.id === 'playerOneDiv'){

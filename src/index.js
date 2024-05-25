@@ -89,9 +89,6 @@ btn.addEventListener('click', () => {
     if(loader){
         loader.style.display = 'none';
     }
-    
-    
-    
 
     clearGameBoard(playerOne.gameBoard);
 
@@ -167,7 +164,7 @@ function letsPlay(){
             const clickedCell = playerTwo.gameBoard.grid[clickedX][clickedY];
             playerTwo.receiveAttack([clickedX, clickedY]);
             if(clickedCell){
-                e.target.classList.add('hit-cell');
+                e.target.classList.add('hit-cell');     //to color the tile red if it hits 
                 // column.classList.remove('grid-cell-hidden');
                 // column.classList.add('grid-cell');
                 console.log(`Clicked on cell [${clickedX},${clickedY}]`);
@@ -179,7 +176,7 @@ function letsPlay(){
                 }
             }
             else{
-                e.target.classList.add('miss-cell');
+                e.target.classList.add('miss-cell');        //to gray out tiles that are miss in css
                 console.log(playerTwo.gameBoard.missedAttack);
                 e.target.innerHTML = 'X';
             }
@@ -204,6 +201,8 @@ function letsPlay(){
     });
     playerTwoDiv.addEventListener('click', () => {
        btn.disabled = true;
+       const welcomeMessage = document.querySelector('.welcome-message');
+       welcomeMessage.innerText = 'Game Started! Good luck with defeating the skynet';
     });
 }
 
