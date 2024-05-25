@@ -67,6 +67,7 @@ function computerPlay() {
     else{
         if (clickedCell) {
             targetCell.innerHTML = 'S';
+            targetCell.classList.add('hit-cell'); 
             if(playerOne.gameBoard.allShipsSunken()){
                 currentPlayer = null;
                 alert('Game Over');
