@@ -16,6 +16,9 @@ function htmlGridGenerator(player, playerDiv){
             const column = document.createElement('div');
             column.classList.add('grid-cell');
             column.setAttribute('data-coordinates', `[${i},${j}]`);
+            if (player.gameBoard.grid[i][j] && playerDiv.id === 'playerOneDiv') {
+                column.classList.add('ship-cell');
+            }
             // column.innerHTML = player.gameBoard.grid[i][j] ? 'S' : '';
             if(playerDiv.id === 'playerOneDiv'){
                 toggleBlurEffect(column, false); 
