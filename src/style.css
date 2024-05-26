@@ -6,9 +6,11 @@
 
 body {
   display: flex;
+  padding-bottom: 60px;
+  flex-direction: column;       
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   background-color: #f0f0f0;
 }
@@ -54,9 +56,9 @@ body {
 }
 
 .welcome-message {
+  padding-top: 30px;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
   text-align: center;
   color: #333;
   animation: fadeIn 2s ease-in-out; /* Add animation here */
@@ -135,4 +137,9 @@ button:disabled {
 
 .miss-cell {
   background-color: grey; /* Grey color for misses */
+}
+
+::-webkit-scrollbar{
+  width: 0;  /* Remove scrollbar space */
+    background: transparent;
 }

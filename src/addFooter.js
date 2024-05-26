@@ -1,28 +1,63 @@
-export function addFooter(rajatPorwalLink, sourceCodeLink) {
+export function addFooter() {
    
     var footer = document.createElement('footer');
     var paragraph = document.createElement('p');
-    var builtBySpan = document.createElement('span');
-    builtBySpan.textContent = 'Built by ';
+    var text1 = document.createElement('span');
+    text1.textContent = 'Built by ';
     
-    var rajatPorwalAnchor = document.createElement('a');
-    rajatPorwalAnchor.textContent = 'Rajat Porwal';
-    rajatPorwalAnchor.href = rajatPorwalLink;
+    var profileLinkText = document.createElement('a');
+    profileLinkText.textContent = 'Rajat Porwal';
+    profileLinkText.href = 'https://github.com/rajat-porwal';
     
-    var pipeSpan = document.createElement('span');
-    pipeSpan.textContent = ' | ';
+    var text2 = document.createElement('span');
+    text2.textContent = ' | ';
     
-    var sourceCodeSpan = document.createElement('span');
+    var linkedinLink = document.createElement('span');
     var sourceCodeAnchor = document.createElement('a');
-    sourceCodeAnchor.textContent = 'Source code';
-    sourceCodeAnchor.href = sourceCodeLink;
+    sourceCodeAnchor.textContent = 'LinkedIn';
+    sourceCodeAnchor.href = 'https://www.linkedin.com/in/rajatporwal/';
 
-    sourceCodeSpan.appendChild(sourceCodeAnchor);
-    paragraph.appendChild(builtBySpan);
-    paragraph.appendChild(rajatPorwalAnchor);
-    paragraph.appendChild(pipeSpan);
-    paragraph.appendChild(sourceCodeSpan);
+    linkedinLink.appendChild(sourceCodeAnchor);
+    paragraph.appendChild(text1);
+    paragraph.appendChild(profileLinkText);
+    paragraph.appendChild(text2);
+    paragraph.appendChild(linkedinLink);
     footer.appendChild(paragraph);
    
     document.body.appendChild(footer);
+
+    var style = document.createElement('style');
+    style.textContent = `
+        footer {
+            background-color: #2c3e50; 
+            color: #ffffff; 
+            padding: 20px; 
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+            transition: background-color 0.3s ease; 
+        }
+        
+        footer p {
+            margin: 0;
+        }
+        
+        footer a {
+            margin-left: 3px;
+            margin-right: 3px;
+            color: #3498db; 
+            text-decoration: none;
+            transition: color 0.3s ease; 
+        }
+        
+        footer a:hover {
+            color: #2980b9; 
+            text-decoration: underline;
+        }
+    
+    `;
+    document.head.appendChild(style);
 }

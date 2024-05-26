@@ -121,6 +121,13 @@ btn.addEventListener('click', () => {
     console.log(playerTwo.gameBoard.ships);
 });
 
+function clearGameBoard(gameBoard) {            // I was confused as to how to clear the previous ships when the button is clicked this is how I had to
+    gameBoard.grid = Array.from({ length: 10 }, () => Array(10).fill(null));
+    gameBoard.ships = [];
+    gameBoard.missedAttack = [];
+}
+
+
 function toggleTurn(){
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
     console.log(`It's now ${currentPlayer.playerName}'s turn`);
@@ -210,16 +217,9 @@ function letsPlay(){
 
 letsPlay();
 
-var rajatPorwalLink = 'https://example.com/rajatporwal';
-var sourceCodeLink = 'https://example.com/sourcecode';
-addFooter(rajatPorwalLink, sourceCodeLink);
+addFooter();
 
 
-function clearGameBoard(gameBoard) {            // I was confused as to how to clear the previous ships when the button is clicked this is how I had to
-    gameBoard.grid = Array.from({ length: 10 }, () => Array(10).fill(null));
-    gameBoard.ships = [];
-    gameBoard.missedAttack = [];
-}
 
 
 
