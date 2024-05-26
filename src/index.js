@@ -84,6 +84,11 @@ function computerPlay() {
 
 btn.addEventListener('click', () => {
 
+    const mainDivPaddingTop = parseInt(window.getComputedStyle(mainDiv).paddingTop);        //added to dynamically change padding/margin for styling
+    if (mainDivPaddingTop !== 50) {
+        mainDiv.style.paddingTop = '50px';
+    }
+
     const welcomeMessage = document.querySelector('.welcome-message');
     welcomeMessage.innerText = 'Click on Tiles for the game to begin or generate your ship placement again';
 
