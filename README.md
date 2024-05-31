@@ -37,6 +37,6 @@ In this project, the main goal was to practice creating a consistent comment str
 
 ## Author
 
-[Rajat Porwal]((https://github.com/rajat-porwal)) - [LinkedIn](https://www.linkedin.com/in/rajatporwal/) - rajatporwal@protonmail.com
+[Rajat Porwal](https://github.com/rajat-porwal) - [LinkedIn](https://www.linkedin.com/in/rajatporwal/) - rajatporwal@protonmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
