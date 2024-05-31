@@ -1,5 +1,8 @@
 # Battleship
-[Project: BattleShip](https://rajat-porwal.github.io/Battleship-Game/)
+
+<h2>🚀 Demo</h2>
+
+[https://rajat-porwal.github.io/Battleship-Game/](https://rajat-porwal.github.io/Battleship-Game/)
 
 # Summary
 Created a player versus computer Battleship game. Players can set ten ships and change the rotation of the ship placement
