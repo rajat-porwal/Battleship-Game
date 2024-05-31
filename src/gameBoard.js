@@ -34,7 +34,7 @@ class gameBoard{
                     }
                 }
                 break;
-            case 2:
+            case 2:   //changed it cuz of the overlap problem i was facing as random ship generator was gernating overlapping ships
             case 3:
             case 4:
                 if (orientation === 'horizontal') {

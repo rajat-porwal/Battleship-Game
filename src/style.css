@@ -18,12 +18,13 @@ body {
 .loader {
   background-color: var(--main-color);      /* credit goes to https://codepen.io/petersonby/pen/gzxpdj for animation*/
   overflow: hidden;
-  width: 100px; /* Adjust as needed */
-  height: 100px; /* Adjust as needed */
+  width: 100px;  
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0px auto; /* Center the loader */
+  margin: 0px auto; 
+  padding-bottom: 30px;
 }
 
 .loader__element {
@@ -60,7 +61,7 @@ body {
   font-weight: bold;
   text-align: center;
   color: #333;
-  animation: fadeIn 2s ease-in-out; /* Add animation here */
+  animation: fadeIn 2s ease-in-out; 
 }
 
 @keyframes fadeIn {
@@ -126,15 +127,15 @@ button:disabled {
 }
 
 .ship-cell {
-  background-color: #007bff; /* Blue color for ship cells */
+  background-color: #007bff; 
 }
 
 .hit-cell {
-  background-color: red; /* Red color for hits */
+  background-color: red; 
 }
 
 .miss-cell {
-  background-color: grey; /* Grey color for misses */
+  background-color: grey; 
 }
 
 ::-webkit-scrollbar{
