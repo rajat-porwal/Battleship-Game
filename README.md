@@ -1,5 +1,5 @@
 # Battleship
-Project: Battleship
+[Project: BattleShip](https://rajat-porwal.github.io/Battleship-Game/)
 
 # Summary
 Created a player versus computer Battleship game. Players can set ten ships and change the rotation of the ship placement
@@ -12,7 +12,7 @@ In this project, the main goal was to practice creating a consistent comment str
 - Built using pure JavaScript, HTML and CSS
 
 ### Demo
-<img alt="./src/demo_screenshot.png" src="./battleship.gif" width="600" />
+<img alt="demo SS" src="./src/demo_screenshot.png" width="600" />
 
 # Lessons Learned
 
